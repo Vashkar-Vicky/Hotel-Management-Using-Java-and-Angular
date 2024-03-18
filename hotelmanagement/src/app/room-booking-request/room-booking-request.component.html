@@ -1,0 +1,52 @@
+<div class="container">
+    <form  #login="ngForm" >
+    <div class="row request_container">
+        <div class="col-sm-12 text-center">
+            <h3>RoomBooking</h3>  
+        </div>
+    </div>
+    <div class="row ">
+        <div class="col-sm-12 mb-4">
+            <h2><u>Contact Info</u></h2>
+        </div>
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="name">Enter Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name"  [(ngModel)]="newRoom.name" rquired>
+                        <span *ngIf ="login.controls['Name']?.invalid && login.controls['Name']?.touched" class="error">Name is required</span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="text"  class="form-control" id="email" name="email" placeholder="Email"  [(ngModel)]="newRoom.email" required>
+                        <span *ngIf ="login.controls['email']?.invalid && login.controls['email']?.touched" class="error">Email is required</span>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="roomType">Roomtype</label>
+                        <select id="roomType" name="roomType" class="form-control" [(ngModel)]="newRoom.roomType" required>
+                            <!-- Add your options here -->
+                            <option value="Deluxe">Deluxe</option>
+                            <option value="Standard">Standard</option>
+                            <!-- Add more options as needed -->
+                        </select>
+                        <span *ngIf="login.controls['roomType']?.invalid && login.controls['roomType']?.touched" class="error">Room type is required</span>
+                    </div>
+                </div> 
+            </div>
+            <br>
+           
+            <br>
+            <div class="col-sm-12">
+                <button [disabled]="login.invalid" (click)="addroom()" type="submit"  class="btn btn-info" ><a  routerLink="/home">Next</a></button>
+            </div>
+        </div>
+    </div>
+    </form>
+</div>
+
+<!-- [disabled]="login.invalid"* -->

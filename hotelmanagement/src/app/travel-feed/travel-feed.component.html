@@ -1,0 +1,17 @@
+<!-- travel-feed.component.html -->
+<div *ngIf="travelItems.length > 0">
+    <h2>Travel Rss Feed</h2>
+    <ul>
+      <li *ngFor="let item of travelItems">
+        <h3>{{item.title}}</h3>
+        
+        <p>{{item.description}}</p>
+        <a [href]="item.link" target="_blank">Read More</a>
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="travelItems.length == 0">
+    <p>Loading travel Rss feed...</p>
+</div>
+  
+

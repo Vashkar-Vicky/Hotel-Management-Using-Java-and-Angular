@@ -1,0 +1,117 @@
+<div class="container">
+  <form #login="ngForm">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Booking Information</h2>
+        <div class="form-group">
+          <label for="roomType">Room Type:</label>
+          <div>
+            <label>
+              <input
+                type="radio"
+                name="roomType"
+                value="standard"
+                [(ngModel)]="billingData.roomType"
+                required
+              />
+              Standard
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="roomType"
+                value="deluxe"
+                [(ngModel)]="billingData.roomType"
+                required
+              />
+              Deluxe
+            </label>
+          </div>
+        </div>
+        <br>
+        <!-- From-To Date -->
+        <div class="form-group">
+          <label>From To:</label>
+          <input
+            name="formTo"
+            type="date"
+            required
+            class="form-control"
+            [(ngModel)]="billingData.formTo"
+            #formToInput="ngModel"
+          />
+          <span *ngIf="formToInput.invalid && formToInput.touched" class="error">* Required</span>
+        </div>
+
+        <!-- From Date -->
+        <div class="form-group">
+          <label>From Date:</label>
+          <input
+            name="formDate"
+            type="date"
+            required
+            class="form-control"
+            [(ngModel)]="billingData.formDate"
+            #formDateInput="ngModel"
+          />
+          <span *ngIf="formDateInput.invalid && formDateInput.touched" class="error">* Required</span>
+        </div>
+
+        <!-- Room available -->
+       
+
+        <div class="form-group">
+          <label>Add-on Services:</label>
+          <div>
+            <label style="margin-right: 20px;">
+              <input
+                type="checkbox"
+                name="spa"
+                [(ngModel)]="billingData.services.spa"
+              />
+              Spa
+            </label>
+            <label style="margin-right: 20px;">
+              <input
+                type="checkbox"
+                name="swimmingPool"
+                [(ngModel)]="billingData.services.swimmingPool"
+              />
+              Swimming Pool
+            </label>
+            <label style="margin-right: 20px;">
+              <input
+                type="checkbox"
+                name="breakfast"
+                [(ngModel)]="billingData.services.breakfast"
+              />
+              Breakfast
+            </label>
+          </div>
+        </div>
+        <br>
+
+        <div class="form-group col-md-3">
+          <label for="totalAmount">Total Amount ($)</label>
+          <input
+            type="number"
+            id="totalAmount"
+            name="totalAmount"
+            class="form-control"
+            required
+            [(ngModel)]="billingData.totalAmount"
+            [readonly]="true"
+          />
+        </div>
+        <br>
+     
+
+        <div class="pd-2">
+          <button type="button" (click)="calculateTotalAmount()">Calculate</button>
+          <button type="submit" style="margin-left: 20px;"><a  routerLink="/room-booking-request">Submit</a></button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>

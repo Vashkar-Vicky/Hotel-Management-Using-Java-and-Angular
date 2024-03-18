@@ -1,0 +1,16 @@
+<div *ngIf="travelData">
+    <!-- <h2>{{ travelData.feed.title }}</h2> -->
+    <!-- <p>{{ travelData.feed.description }}</p> -->
+  
+    <div *ngFor="let item of travelData">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.content_text }}</p>
+      <img [src]="item.image" alt="Image not available" *ngIf="item.image">
+      <a [href]="item.url" target="_blank">Read More</a>
+    </div>
+  </div>
+  
+  <div *ngIf="!travelData">
+    <p>Loading travel data...</p>
+  </div>
+  
